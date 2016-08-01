@@ -29,9 +29,9 @@ Example Execution
 sudo apt install python2.7 aptitude ansible
 sudo mkdir /etc/ansible/roles
 
-curl PATH_TO_THIS_REPO/test.yml
+curl https://raw.githubusercontent.com/TobiG77/xenial-bootstrap-setup/master/test.yml > xenial-bootstrap.yml
 
-sudo ansible-playbook test.yml
+sudo ansible-playbook xenial-bootstrap.yml
 ```
  
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
