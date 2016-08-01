@@ -1,3 +1,0 @@
-    - hosts: localhost
-      roles:
-         - { role: tobig77.xenial-bootstrap-setup }
