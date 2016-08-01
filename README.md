@@ -1,0 +1,53 @@
+Role Name
+=========
+
+Personal collection of tasks to get my workstation ASAP into a productive state.
+
+Requirements
+------------
+
+For from scratch installations.
+
+python2.7 for ansible 
+aptitude for ansible
+ansible itself
+
+Role Variables
+--------------
+
+None.
+
+Dependencies
+------------
+
+None.
+
+Example Execution
+-----------------
+
+```
+sudo apt install python2.7 aptitude ansible
+sudo mkdir /etc/ansible/roles
+
+curl PATH_TO_THIS_REPO/test.yml
+
+sudo ansible-playbook test.yml
+```
+ 
+Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+
+or in your own playbook:
+
+    - hosts: localhost
+      roles:
+         - { role: tobig77.xenial-bootstrap-setup }
+
+License
+-------
+
+BSD
+
+Author Information
+------------------
+
+An optional section for the role authors to include contact information, or a website (HTML is not allowed).
