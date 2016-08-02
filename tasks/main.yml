@@ -1,5 +1,12 @@
 ---
-# setup docker from vendor repository
 - apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D
 - apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-xenial main' state=present
 - apt: name=docker-engine state=present update_cache=yes
+
+- get_url: url=https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb checksum="sha256:ce542b6a27536a3ae4c3e8961287739d8b966e8e3a682ecda42cd17871fe22b9" dest=/tmp/erlang-solutions_1.0_all.deb
+- command: dpkg -i /tmp/erlang-solutions_1.0_all.deb creates=/etc/apt/sources.list.d/erlang-solutions.list
+- name: install elixir and prerequisites
+  apt: name={{item}} state=present update_cache=yes
+  with_items:
+       - esl-erlang
+       - elixir
