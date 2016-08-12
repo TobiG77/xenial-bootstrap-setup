@@ -1,8 +1,10 @@
 ---
+# docker
 - apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D
 - apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-xenial main' state=present
 - apt: name=docker-engine state=present update_cache=yes
 
+#elixir
 - get_url: url=https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb checksum="sha256:ce542b6a27536a3ae4c3e8961287739d8b966e8e3a682ecda42cd17871fe22b9" dest=/tmp/erlang-solutions_1.0_all.deb
 - command: dpkg -i /tmp/erlang-solutions_1.0_all.deb creates=/etc/apt/sources.list.d/erlang-solutions.list
 - name: install elixir and prerequisites
@@ -10,3 +12,22 @@
   with_items:
        - esl-erlang
        - elixir
+
+#awscli
+- name: install awscli and prerequisites
+  apt: name=python-pip state=present
+- command: pip install awscli creates=/usr/local/bin/aws
+
+# rbenv prerequisites
+- name: install rbenv prerequisites
+  apt: name={{item}} state=present
+  with_items:
+    - libreadline-dev
+    - zlib1g-dev
+    - libssl-dev
+
+# Google Chrome
+- get_url: url=https://dl-ssl.google.com/linux/linux_signing_key.pub checksum="sha256:d5782a4454b189fb71c362f1c1dd52e46126dcbb80f6b7fb618b774fc425e2dd" dest=/tmp/linux_signing_key.pub
+- command: apt-key add /tmp/linux_signing_key.pub
+- apt_repository: repo="deb http://dl.google.com/linux/chrome/deb/ stable main" state=present
+- apt: name=google-chrome-stable state=present update_cache=yes
