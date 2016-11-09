@@ -29,7 +29,7 @@ Example Execution
 sudo apt install python2.7 aptitude ansible
 sudo mkdir /etc/ansible/roles
 
-curl https://raw.githubusercontent.com/TobiG77/xenial-bootstrap-setup/master/test.yml > xenial-bootstrap.yml
+curl https://raw.githubusercontent.com/TobiG77/xenial-bootstrap-setup/master/test-playbook.yml > xenial-bootstrap.yml
 sudo ansible-galaxy install TobiG77.xenial-bootstrap-setup
 sudo ansible-playbook xenial-bootstrap.yml
 ```
